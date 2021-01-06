@@ -24,6 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'd&q0zfz5j!sm!a4_krfuvp!7nu$r$f(1p$6^1vrwq5p9lx(*lw'
 
+API_URL = os.environ.get('API_URL','http://localhost:8080')
 MARVEL_PUBLIC_KEY = os.environ.get('MARVEL_PUBLIC_KEY','57422c4803fb8c8b6625b7f8b6151a6f')
 MARVEL_PRIVATE_KEY = os.environ.get('MARVEL_PRIVATE_KEY','90c5754f8927c87bb7e1190fba1092978ed095dc')
 

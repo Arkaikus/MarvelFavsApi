@@ -31,7 +31,7 @@ schema_view = get_schema_view(
         contact=openapi.Contact(email="giraldo.santiago@correounivalle.edu.co"),
         license=openapi.License(name="MIT License"),
     ),
-    url='http://localhost:8080',
+    url=settings.API_URL,
     public=True,
 )
 
