@@ -1,0 +1,16 @@
+{
+  "name": "MarvelFavsAPI",
+  "description": "An API for saving favorite comics of MARVEL",
+  "image": "heroku/python",
+  "repository": "https://github.com/Arkaikus/MarvelFavsApi",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "python manage.py collectstatic --noinput",
+        "test": "python manage.py test"
+      }
+    }
+  }
+}
