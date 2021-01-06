@@ -17,7 +17,18 @@ For development
 
 For deployment
 
-TODO: deploy with docker/heroku
+### Heroku
+
+Fork this repository, then link it to your own heroku app with `heroku git:remote -a <app-name>` and deploy from
+heroku site or pushing to heroku remote 
+
+Finally run `make heroku` to run django migrations
+
+### Docker
+
+Run `make build` to create the docker image, then run `make run` to start the container of the api
+
+the container runs on port `9080` feel free to change it in `docker/docker-compose-yml`
 
 ## Endpoints
 
