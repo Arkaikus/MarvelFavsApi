@@ -10,7 +10,8 @@ For development
 - Create a virtualenv with `virtualenv venv -p python3`
 - Activate virtualenv
 - Install requirements with `pip install -r requirements.txt`
-- Run with `python manage.py runserver host:port`
+- Then `cd app`
+- Run app with `python manage.py runserver host:port`
 
 ## Deploy
 
