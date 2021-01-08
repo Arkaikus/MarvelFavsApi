@@ -20,9 +20,7 @@ For deployment
 ### Heroku
 
 Fork this repository, then link it to your own heroku app with `heroku git:remote -a <app-name>` and deploy from
-heroku site or pushing to heroku remote 
-
-Finally run `make heroku` to run django migrations
+heroku site or pushing to heroku remote
 
 ### Docker
 
