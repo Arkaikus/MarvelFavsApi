@@ -18,10 +18,9 @@ class SignUpSerializer(serializers.ModelSerializer):
 
 
 class FavoritesSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Favorites
-        fields = ('comicId', 'title', 'thumbnail','description')
+        fields = ('comicId', 'title', 'thumbnail', 'description')
 
 
 

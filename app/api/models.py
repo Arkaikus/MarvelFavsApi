@@ -7,4 +7,7 @@ class Favorites(models.Model):
     comicId = models.CharField(max_length=255, primary_key=True)
     title = models.CharField(max_length=255)
     thumbnail = models.URLField()
-    description = models.TextField(default="")
+    description = models.TextField(default="", blank=True, null=False)
+
+    class Meta:
+        unique_together = (('user', 'comicId'), )
