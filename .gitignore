@@ -130,8 +130,5 @@ dmypy.json
 
 .idea/
 
-app/api/migrations/*
-!app/api/migrations/__init__.py
-
 
 
