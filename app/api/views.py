@@ -3,7 +3,7 @@ import traceback
 from django.utils.decorators import method_decorator
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_204_NO_CONTENT, HTTP_201_CREATED, HTTP_404_NOT_FOUND
@@ -42,14 +42,14 @@ class SignUp(CreateAPIView):
     name="get",
     decorator=swagger_auto_schema(
         manual_parameters=[AccessTokenParameter()],
-        operation_description="Listado de Cómics Favoritos"
+        operation_description="Get a list of registered favorite comics"
     )
 )
 @method_decorator(
     name="post",
     decorator=swagger_auto_schema(
         manual_parameters=[AccessTokenParameter()],
-        operation_description="Registrar Cómic Favorito"
+        operation_description="Create a favorite comic"
     )
 )
 class FavoritesCR(ListAPIView, CreateAPIView):
@@ -62,24 +62,24 @@ class FavoritesCR(ListAPIView, CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-
+@method_decorator(
+    name="get",
+    decorator=swagger_auto_schema(
+        manual_parameters=[AccessTokenParameter()],
+        operation_description="Get a single comic from favorite list"
+    )
+)
 @method_decorator(
     name="delete",
     decorator=swagger_auto_schema(
         manual_parameters=[AccessTokenParameter()],
-        operation_description="Eliminar Cómic del listado de Favoritos"
+        operation_description="Delete a single comic from favorite list"
     )
 )
-class FavoritesUD(DestroyAPIView):
+class FavoritesGD(DestroyAPIView, RetrieveAPIView):
     serializer_class = FavoritesSerializer
     permission_classes = [IsAuthenticated]
+    lookup_field = 'comicId'
 
-    def delete(self, request, *args, **kwargs):
-        try:
-            instance = models.Favorites.objects.get(comicId=kwargs['comicId'])
-            self.perform_destroy(instance)
-            return Response(status=HTTP_204_NO_CONTENT)
-        except Exception as e:
-            traceback.print_exc(e)
-            return Response(status=HTTP_404_NOT_FOUND)
-
+    def get_queryset(self):
+        return models.Favorites.objects.filter(user=self.request.user)

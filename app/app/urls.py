@@ -47,7 +47,7 @@ urlpatterns = [
 
     # Favourite Comics
     path('favorites/', FavoritesCR.as_view()),
-    path('favorites/<str:comicId>', FavoritesUD.as_view()),
+    path('favorites/<str:comicId>', FavoritesGD.as_view()),
 
     # API DOCUMENTATION
     path('doc', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
